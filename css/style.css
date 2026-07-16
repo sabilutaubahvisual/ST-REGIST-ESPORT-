@@ -1193,4 +1193,52 @@ grid-template-columns:1fr 1fr;
 
 body.loaded{
     opacity:1;
+}/* ==========================
+   TIMELINE POSTER
+========================== */
+
+.timeline{
+    padding:100px 0;
+}
+
+.timeline-subtitle{
+    text-align:center;
+    color:#c7dfff;
+    margin-top:15px;
+    margin-bottom:40px;
+    font-size:18px;
+}
+
+.timeline-poster{
+
+    display:flex;
+    justify-content:center;
+
+}
+
+.timeline-poster img{
+
+    width:100%;
+    max-width:750px;
+
+    border-radius:22px;
+
+    border:2px solid rgba(0,170,255,.25);
+
+    box-shadow:
+        0 0 40px rgba(0,170,255,.25);
+
+    transition:.4s;
+
+    cursor:pointer;
+
+}
+
+.timeline-poster img:hover{
+
+    transform:scale(1.02);
+
+    box-shadow:
+        0 0 60px rgba(0,170,255,.45);
+
 }
