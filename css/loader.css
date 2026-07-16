@@ -1,0 +1,377 @@
+/* ===========================================
+   SABILU TAUBAH ESPORT
+   CINEMATIC LOADER
+=========================================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100vh;
+    background:#010814;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    overflow:hidden;
+    z-index:99999;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+/* ===========================
+   BACKGROUND
+=========================== */
+
+.loader-bg{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at center,
+    rgba(0,170,255,.15),
+    transparent 60%),
+    linear-gradient(#010814,#00040b);
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.loader-bg::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(rgba(0,170,255,.05) 1px,transparent 1px),
+
+    linear-gradient(90deg,rgba(0,170,255,.05) 1px,transparent 1px);
+
+    background-size:60px 60px;
+
+    animation:gridMove 10s linear infinite;
+
+}
+
+@keyframes gridMove{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(60px);
+
+    }
+
+}
+
+/* ===========================
+   LIGHT
+=========================== */
+
+.loader-light{
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(0,180,255,.35),
+
+    transparent 70%);
+
+    animation:pulse 3s ease infinite;
+
+}
+
+@keyframes pulse{
+
+0%,100%{
+
+transform:scale(1);
+
+opacity:.6;
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+opacity:1;
+
+}
+
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.loader-logo{
+
+    width:190px;
+
+    position:relative;
+
+    z-index:5;
+
+    opacity:0;
+
+    transform:scale(.6);
+
+    animation:
+
+    logoIn 1.4s forwards;
+
+    filter:
+
+    drop-shadow(0 0 10px #00aaff)
+
+    drop-shadow(0 0 25px #00bfff)
+
+    drop-shadow(0 0 50px #00e1ff);
+
+}
+
+@keyframes logoIn{
+
+0%{
+
+opacity:0;
+
+transform:scale(.5);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+#loader h1{
+
+    margin-top:30px;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:54px;
+
+    letter-spacing:6px;
+
+    color:white;
+
+    opacity:0;
+
+    animation:titleIn 1s .8s forwards;
+
+    text-shadow:
+
+    0 0 15px #00aaff,
+
+    0 0 35px #00bfff;
+
+}
+
+#loader p{
+
+    margin-top:12px;
+
+    color:#b8dfff;
+
+    font-size:18px;
+
+    letter-spacing:5px;
+
+    opacity:0;
+
+    animation:titleIn 1s 1.2s forwards;
+
+}
+
+@keyframes titleIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+filter:blur(8px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+filter:blur(0);
+
+}
+
+}
+
+/* ===========================
+   SCAN LINE
+=========================== */
+
+#loader::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    width:100%;
+
+    height:220px;
+
+    background:
+
+    linear-gradient(
+
+    transparent,
+
+    rgba(0,220,255,.30),
+
+    transparent);
+
+    animation:scan 2.6s infinite;
+
+}
+
+@keyframes scan{
+
+0%{
+
+top:-250px;
+
+}
+
+100%{
+
+top:100%;
+
+}
+
+}
+
+/* ===========================
+   LOADING BAR
+=========================== */
+
+.loader-progress{
+
+    width:320px;
+
+    height:5px;
+
+    background:rgba(255,255,255,.08);
+
+    margin-top:40px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.loader-progress span{
+
+    display:block;
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#00aaff,#00ffee);
+
+    animation:loading 3.8s linear forwards;
+
+    box-shadow:0 0 20px #00bfff;
+
+}
+
+@keyframes loading{
+
+    from{
+
+        width:0;
+
+    }
+
+    to{
+
+        width:100%;
+
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.loader-logo{
+
+width:140px;
+
+}
+
+#loader h1{
+
+font-size:32px;
+
+letter-spacing:3px;
+
+}
+
+#loader p{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+}
+
+.loader-progress{
+
+width:220px;
+
+}
+
+}
